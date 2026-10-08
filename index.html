@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goat Management System</title>
+    <meta
+      name="description"
+      content="Professional goat management dashboard for tracking vaccination dates, goat records, birth dates, and owner details."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Farm Operations</p>
+          <h1>Goat Management System</h1>
+        </div>
+        <button id="resetDataBtn" class="ghost-button" type="button">Reset Demo Data</button>
+      </header>
+
+      <main class="dashboard">
+        <section class="stats-grid" aria-label="Goat Summary Stats">
+          <article class="stat-card accent-green">
+            <span class="stat-label">Total Goats</span>
+            <strong id="totalGoatsStat">0</strong>
+          </article>
+          <article class="stat-card accent-gold">
+            <span class="stat-label">Vaccinated</span>
+            <strong id="vaccinatedStat">0</strong>
+          </article>
+          <article class="stat-card accent-blue">
+            <span class="stat-label">Herd Size</span>
+            <strong id="herdCountStat">0</strong>
+          </article>
+          <article class="stat-card accent-purple">
+            <span class="stat-label">Owners</span>
+            <strong id="ownerCountStat">0</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel form-panel">
+            <div class="panel-header">
+              <h2 id="formTitle">Add Goat Record</h2>
+            </div>
+
+            <form id="goatForm" novalidate>
+              <div class="field-grid">
+                <label>
+                  <span>Goat Number</span>
+                  <input id="goatNumber" name="goatNumber" type="text" placeholder="G-001" required />
+                </label>
+
+                <label>
+                  <span>Owner</span>
+                  <input id="owner" name="owner" type="text" placeholder="Owner name" required />
+                </label>
+
+                <label>
+                  <span>Date of Birth</span>
+                  <input id="dob" name="dob" type="date" required />
+                </label>
+
+                <label>
+                  <span>Vaccination Date</span>
+                  <input id="vaccinationDate" name="vaccinationDate" type="date" required />
+                </label>
+
+                <label>
+                  <span>Number of Goats</span>
+                  <input id="numberOfGoats" name="numberOfGoats" type="number" min="1" placeholder="15" required />
+                </label>
+
+                <label>
+                  <span>Vaccine Type</span>
+                  <input id="vaccineType" name="vaccineType" type="text" placeholder="Cattle vaccine" />
+                </label>
+              </div>
+
+              <div class="actions">
+                <button id="submitBtn" class="primary-button" type="submit">Save Record</button>
+                <button id="cancelEditBtn" class="secondary-button hidden" type="button">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel records-panel">
+            <div class="panel-header split-header">
+              <h2>Goat Records</h2>
+              <input id="searchInput" type="search" placeholder="Search goats..." aria-label="Search goat records" />
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Goat #</th>
+                    <th>Owner</th>
+                    <th>DOB</th>
+                    <th>Vaccination</th>
+                    <th>Herd</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="goatTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="emptyStateTemplate">
+      <tr class="empty-row">
+        <td colspan="6">No goat records found.</td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
